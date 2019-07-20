@@ -7,11 +7,11 @@
         <span><input type="text" /></span>
         <span><button>Add</button></span>
       </p>
-      <ul>
-        <li v-for="(item, index) in todoItemCount" v-bind:key="index">
-          <todo-list-item v-bind:itemName="taskName"></todo-list-item>
+      <ol>
+        <li v-for="(item, index) in todolist" v-bind:key="index">
+          <todo-list-item v-bind:itemName="item.taskName"></todo-list-item>
         </li>
-      </ul>
+      </ol>
       <p>
         <span>ALL </span>
         <span>Active </span>
@@ -27,8 +27,12 @@ export default {
   name: 'app',
   data: function() {
     return {
-      todoItemCount: 1,
-      taskName: 'default task name'
+      todolist: [
+        {
+          index: 1,
+          taskName: 'default task Name'
+        }
+      ]
     }
   },
   components: {
