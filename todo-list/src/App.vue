@@ -12,7 +12,7 @@
       <br>
       <ol class="todoList">
         <li v-for="item in showTodoList" v-bind:key="item.number">
-          <todo-list-item v-bind:itemName="item.taskName" v-bind:itemIndex="item.number" v-bind:isChecked="item.checked" v-on:handle-select="handleSelectOperator"></todo-list-item>
+          <todo-list-item v-bind:itemName="item.taskName" v-bind:itemIndex="item.number" v-bind:isChecked="item.checked" v-on:handle-select="handleSelectOperator" v-on:update-task-name="updateName"></todo-list-item>
         </li>
       </ol>
       <div>
@@ -58,6 +58,9 @@ export default {
     },
     selectCompleteItems: function() {
       this.showTodoList = this.todolist.filter(item => item.checked);
+    },
+    updateName: function(changedName, itemIndex) {
+      this.todolist.filter(item => item.number === itemIndex)[0].taskName = changedName;
     }
   },
   components: {
