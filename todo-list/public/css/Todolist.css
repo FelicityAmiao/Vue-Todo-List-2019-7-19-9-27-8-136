@@ -30,12 +30,21 @@ body {
     margin-left: 5px;
 }
 
+.addButton:hover{
+    cursor: pointer;
+    background-color: #fcaaac;
+}
+
 .todoList{
     padding-left: 20px;
 }
 
 .todoList li{
     padding: 5px;
+}
+
+.todoList li:nth-child(even) {
+    background-color: #f4ecec;
 }
 
 .filters {

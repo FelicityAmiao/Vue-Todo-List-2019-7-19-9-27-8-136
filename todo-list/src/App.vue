@@ -6,8 +6,8 @@
         <em>Simple Todo List with adding and filter by diff status.</em>
       </p>
       <div>
-        <span><input type="text" class="inputText"/></span>
-        <div class="addButton">Add</div>
+        <span><input type="text" class="inputText" v-model="inputTaskName"/></span>
+        <div class="addButton" @click="addItem">Add</div>
       </div>
       <br>
       <ol class="todoList">
@@ -32,12 +32,16 @@ export default {
   name: 'app',
   data: function() {
     return {
-      todolist: [
-        {
-          index: 1,
-          taskName: 'default task Name'
-        }
-      ]
+      inputTaskName: '',
+      todolist: []
+    }
+  },
+  methods: {
+    addItem: function() {
+      let item = {};
+      item['taskName'] = this.inputTaskName;
+      this.todolist.push(item);
+      this.inputTaskName = '';
     }
   },
   components: {
