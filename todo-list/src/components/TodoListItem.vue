@@ -1,12 +1,22 @@
 <template>
-    <div>
-        <input type="checkbox" /> {{itemName}}
+    <div v-bind:class="{checkClass:checked}">
+        <input type="checkbox" v-model="checked" v-on:change="handleSelect"/> {{itemName}}
     </div>
 </template>
 <script>
 export default {
     name: "TodoListItem",
-    props: ["itemName"],
+    props: ["itemName", "itemIndex"],
+    data: function() {
+        return {
+            checked: false
+        }
+    },
+    methods: {
+        handleSelect: function() {
+            this.$emit('handle-select', this.checked, this.itemIndex);
+        }
+    }
 }
 </script>
 

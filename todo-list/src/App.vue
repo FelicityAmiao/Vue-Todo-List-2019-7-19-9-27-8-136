@@ -6,13 +6,13 @@
         <em>Simple Todo List with adding and filter by diff status.</em>
       </p>
       <div>
-        <span><input type="text" class="inputText" v-model="inputTaskName"/></span>
-        <div class="addButton" @click="addItem">Add</div>
+        <span><input type="text" class="inputText" v-model="inputTaskName" v-on:keyup.enter="addItem"/></span>
+        <div class="addButton" v-on:click="addItem">Add</div>
       </div>
       <br>
       <ol class="todoList">
         <li v-for="(item, index) in todolist" v-bind:key="index">
-          <todo-list-item v-bind:itemName="item.taskName"></todo-list-item>
+          <todo-list-item v-bind:itemName="item.taskName" v-bind:itemIndex="index" v-on:handle-select="handleSelectOperator"></todo-list-item>
         </li>
       </ol>
       <div>
@@ -40,8 +40,12 @@ export default {
     addItem: function() {
       let item = {};
       item['taskName'] = this.inputTaskName;
+      item['checked'] = false;
       this.todolist.push(item);
       this.inputTaskName = '';
+    },
+    handleSelectOperator: function(checked, itemIndex) {
+      this.todolist[itemIndex].checked = checked;
     }
   },
   components: {

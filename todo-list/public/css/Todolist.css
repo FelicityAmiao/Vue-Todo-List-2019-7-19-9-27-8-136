@@ -47,6 +47,11 @@ body {
     background-color: #f4ecec;
 }
 
+.checkClass {
+    text-decoration-line: line-through;
+    color: #999;
+}
+
 .filters {
     margin-top: 40px;
     margin-bottom: -10px;
