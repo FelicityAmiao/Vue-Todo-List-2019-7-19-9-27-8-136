@@ -6,13 +6,21 @@
         <em>Simple Todo List with adding and filter by diff status.</em>
       </p>
       <div>
-        <span><input type="text" class="inputText" v-model="inputTaskName" v-on:keyup.enter="addItem"/></span>
+        <span>
+          <input type="text" class="inputText" v-model="inputTaskName" v-on:keyup.enter="addItem" />
+        </span>
         <div class="addButton" v-on:click="addItem">Add</div>
       </div>
-      <br>
+      <br />
       <ol class="todoList">
         <li v-for="item in showTodoList" v-bind:key="item.number">
-          <todo-list-item v-bind:itemName="item.taskName" v-bind:itemIndex="item.number" v-bind:isChecked="item.checked" v-on:handle-select="handleSelectOperator" v-on:update-task-name="updateName"></todo-list-item>
+          <todo-list-item
+            v-bind:itemName="item.taskName"
+            v-bind:itemIndex="item.number"
+            v-bind:isChecked="item.checked"
+            v-on:handle-select="handleSelectOperator"
+            v-on:update-task-name="updateName"
+          ></todo-list-item>
         </li>
       </ol>
       <div>
@@ -27,28 +35,30 @@
 </template>
 
 <script>
-import TodoListItem from "./components/TodoListItem.vue"
+import TodoListItem from "./components/TodoListItem.vue";
 export default {
-  name: 'app',
+  name: "app",
   data: function() {
     return {
-      inputTaskName: '',
+      inputTaskName: "",
       todolist: [],
       showTodoList: []
-    }
+    };
   },
   methods: {
     addItem: function() {
       let item = {};
-      item['number'] = this.todolist.length;
-      item['taskName'] = this.inputTaskName;
-      item['checked'] = false;
+      item["number"] = this.todolist.length;
+      item["taskName"] = this.inputTaskName;
+      item["checked"] = false;
       this.todolist.push(item);
       this.selectAllItems();
-      this.inputTaskName = '';
+      this.inputTaskName = "";
     },
     handleSelectOperator: function(checked, itemIndex) {
-      this.todolist.filter(item => item.number === itemIndex)[0].checked = checked;
+      this.todolist.filter(
+        item => item.number === itemIndex
+      )[0].checked = checked;
     },
     selectAllItems: function() {
       this.showTodoList = this.todolist;
@@ -60,13 +70,15 @@ export default {
       this.showTodoList = this.todolist.filter(item => item.checked);
     },
     updateName: function(changedName, itemIndex) {
-      this.todolist.filter(item => item.number === itemIndex)[0].taskName = changedName;
+      this.todolist.filter(
+        item => item.number === itemIndex
+      )[0].taskName = changedName;
     }
   },
   components: {
     TodoListItem
   }
-}
+};
 </script>
 
 <style>
