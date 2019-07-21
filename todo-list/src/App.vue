@@ -11,15 +11,15 @@
       </div>
       <br>
       <ol class="todoList">
-        <li v-for="(item, index) in todolist" v-bind:key="index">
-          <todo-list-item v-bind:itemName="item.taskName" v-bind:itemIndex="index" v-on:handle-select="handleSelectOperator"></todo-list-item>
+        <li v-for="item in showTodoList" v-bind:key="item.number">
+          <todo-list-item v-bind:itemName="item.taskName" v-bind:itemIndex="item.number" v-bind:isChecked="item.checked" v-on:handle-select="handleSelectOperator"></todo-list-item>
         </li>
       </ol>
       <div>
         <ul class="filters">
-          <li>ALL</li>
-          <li>Active</li>
-          <li>Complete</li>
+          <li v-on:click="selectAllItems">ALL</li>
+          <li v-on:click="selectActiveItems">Active</li>
+          <li v-on:click="selectCompleteItems">Complete</li>
         </ul>
       </div>
     </div>
@@ -33,19 +33,31 @@ export default {
   data: function() {
     return {
       inputTaskName: '',
-      todolist: []
+      todolist: [],
+      showTodoList: []
     }
   },
   methods: {
     addItem: function() {
       let item = {};
+      item['number'] = this.todolist.length;
       item['taskName'] = this.inputTaskName;
       item['checked'] = false;
       this.todolist.push(item);
+      this.selectAllItems();
       this.inputTaskName = '';
     },
     handleSelectOperator: function(checked, itemIndex) {
-      this.todolist[itemIndex].checked = checked;
+      this.todolist.filter(item => item.number === itemIndex)[0].checked = checked;
+    },
+    selectAllItems: function() {
+      this.showTodoList = this.todolist;
+    },
+    selectActiveItems: function() {
+      this.showTodoList = this.todolist.filter(item => !item.checked);
+    },
+    selectCompleteItems: function() {
+      this.showTodoList = this.todolist.filter(item => item.checked);
     }
   },
   components: {

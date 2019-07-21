@@ -6,10 +6,10 @@
 <script>
 export default {
     name: "TodoListItem",
-    props: ["itemName", "itemIndex"],
+    props: ["itemName", "itemIndex", "isChecked"],
     data: function() {
         return {
-            checked: false
+            checked: this.isChecked
         }
     },
     methods: {

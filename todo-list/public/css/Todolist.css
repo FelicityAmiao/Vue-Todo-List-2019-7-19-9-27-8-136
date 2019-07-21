@@ -63,4 +63,5 @@ body {
     display: inline;
     list-style: none;
     padding: 21px;
+    cursor: pointer;
 }
