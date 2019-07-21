@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import '../public/css/Todolist.css'
 
 Vue.config.productionTip = false
 
