@@ -1,13 +1,9 @@
 <template>
   <div id="app">
-    <Header></Header>
-    <Body></Body>
-    <Footer></Footer>
     <div class="mainPanel">
-      <h2>Jquery To Do List</h2>
-      <p class="briefIntro">
-        <em>Simple Todo List with adding and filter by diff status.</em>
-      </p>
+      <Header></Header>
+      <Body></Body>
+      <Footer></Footer>
       <div>
         <span>
           <input type="text" class="inputText" v-model="inputTaskName" v-on:keyup.enter="addItem" />

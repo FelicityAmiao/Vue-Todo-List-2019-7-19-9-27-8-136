@@ -1,9 +1,14 @@
 <template>
-    <div>To do List</div>
+  <div>
+    <h2>Jquery To Do List</h2>
+    <p class="briefIntro">
+      <em>Simple Todo List with adding and filter by diff status.</em>
+    </p>
+  </div>
 </template>
 <script>
 export default {
-    name: 'Header'
-}
+  name: "Header"
+};
 </script>
 
