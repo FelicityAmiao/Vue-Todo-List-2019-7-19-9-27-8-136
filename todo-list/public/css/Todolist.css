@@ -60,8 +60,14 @@ body {
 }
 
 .filters li {
-    display: inline;
+    display: inline-block;
     list-style: none;
-    padding: 21px;
+    margin: 0 21px 0 21px;
+    padding: 3px;
     cursor: pointer;
+}
+
+.filterButton {
+    border: 1px solid  rgba(175, 47, 47, 0.1);
+    border-radius: 3px;
 }
