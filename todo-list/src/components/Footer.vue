@@ -20,22 +20,22 @@ export default {
   },
   methods: {
     selectAllItems: function() {
-      const callback = (list) => {
+      const filterTodolistItem = (list) => {
         return list;
       }
-      this.$emit('get-show-type', callback);
+      this.$emit('filter-todolist-item', filterTodolistItem);
     },
     selectActiveItems: function() {
-      const callback = (list) => {
+      const filterTodolistItem = (list) => {
         return list.filter(item => !item.checked);
       }
-      this.$emit('get-show-type', callback);
+      this.$emit('filter-todolist-item', filterTodolistItem);
     },
     selectCompleteItems: function() {
-      const callback = (list) => {
+      const filterTodolistItem = (list) => {
         return list.filter(item => item.checked);
       }
-      this.$emit('get-show-type', callback);
+      this.$emit('filter-todolist-item', filterTodolistItem);
     }
   }
 };

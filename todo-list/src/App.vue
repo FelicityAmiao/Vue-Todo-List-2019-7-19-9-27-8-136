@@ -2,8 +2,8 @@
   <div id="app">
     <div class="mainPanel">
       <Header></Header>
-      <Body :showFilter="showFilter"></Body>
-      <Footer @get-show-type="getShowFilter"></Footer>
+      <Body :filterTodolistItem="filterTodolistItem"></Body>
+      <Footer @filter-todolist-item="getFilterTodolistItem"></Footer>
       <div></div>
     </div>
   </div>
@@ -21,12 +21,12 @@ export default {
   },
   data() {
     return {
-      showFilter: (list) => list
+      filterTodolistItem: (list) => list
     };
   },
   methods: {
-    getShowFilter: function(showFilter) {
-      this.showFilter = showFilter;
+    getFilterTodolistItem: function(filterTodolistItem) {
+      this.filterTodolistItem = filterTodolistItem;
     }
   }
 };

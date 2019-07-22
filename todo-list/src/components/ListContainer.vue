@@ -1,7 +1,7 @@
 <template>
   <div>
     <ol class="todoList">
-      <li v-for="item in showTodoList" v-bind:key="item.number">
+      <li v-for="item in showFilteredTodoList" v-bind:key="item.number">
         <todo-list-item
           v-bind:listItem="item"
           v-on:handle-select="handleSelectOperator"
@@ -20,24 +20,24 @@ export default {
   },
   props: {
     todoList: Array,
-    showFilter: Function
+    filterTodolistItem: Function
   },
   data() {
     return {
-      showTodoList: this.todoList
+      showFilteredTodoList: this.todoList
     };
   },
   watch: {
     todoList: function() {
-      this.selectShowType();
+      this.showFilteredTodoListItem();
     },
-    showFilter: function() {
-      this.selectShowType();
+    filterTodolistItem: function() {
+      this.showFilteredTodoListItem();
     }
   },
   methods: {
-    selectShowType: function() {
-      this.showTodoList = this.showFilter(this.todoList);
+    showFilteredTodoListItem: function() {
+      this.showFilteredTodoList = this.filterTodolistItem(this.todoList);
     },
     handleSelectOperator: function(checked, itemIndex) {
       this.todoList.filter(
