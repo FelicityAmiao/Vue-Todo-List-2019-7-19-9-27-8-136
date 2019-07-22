@@ -20,16 +20,22 @@ export default {
   },
   methods: {
     selectAllItems: function() {
-      this.listType="ALL";
-      this.$emit('get-show-type', this.listType);
+      const callback = (list) => {
+        return list;
+      }
+      this.$emit('get-show-type', callback);
     },
     selectActiveItems: function() {
-      this.listType="Active";
-      this.$emit('get-show-type', this.listType);
+      const callback = (list) => {
+        return list.filter(item => !item.checked);
+      }
+      this.$emit('get-show-type', callback);
     },
     selectCompleteItems: function() {
-      this.listType="Complete";
-      this.$emit('get-show-type', this.listType);
+      const callback = (list) => {
+        return list.filter(item => item.checked);
+      }
+      this.$emit('get-show-type', callback);
     }
   }
 };

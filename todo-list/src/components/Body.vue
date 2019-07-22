@@ -1,7 +1,7 @@
 <template>
   <div>
     <InputBar @get-input-task-name="getInputTaskName"></InputBar>
-    <ListContainer :todoList="todolist" :showType="showType"></ListContainer>
+    <ListContainer :todoList="todolist" :showFilter="showFilter"></ListContainer>
   </div>
 </template>
 <script>
@@ -19,7 +19,7 @@ export default {
     ListContainer
   },
   props: {
-    showType: String
+    showFilter: Function
   },
   data() {
     return {

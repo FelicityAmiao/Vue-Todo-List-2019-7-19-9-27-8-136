@@ -2,8 +2,8 @@
   <div id="app">
     <div class="mainPanel">
       <Header></Header>
-      <Body :showType="showType"></Body>
-      <Footer @get-show-type="getShowType"></Footer>
+      <Body :showFilter="showFilter"></Body>
+      <Footer @get-show-type="getShowFilter"></Footer>
       <div></div>
     </div>
   </div>
@@ -21,12 +21,12 @@ export default {
   },
   data() {
     return {
-      showType: "ALL"
+      showFilter: (list) => list
     };
   },
   methods: {
-    getShowType: function(showType) {
-      this.showType = showType;
+    getShowFilter: function(showFilter) {
+      this.showFilter = showFilter;
     }
   }
 };
