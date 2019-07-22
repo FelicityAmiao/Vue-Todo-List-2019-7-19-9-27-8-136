@@ -11,25 +11,27 @@
 <script>
 export default {
   name: "TodoListItem",
-  props: ["itemName", "itemIndex", "isChecked"],
+  props: {
+    listItem: Object
+  },
   data: function() {
     return {
-      checked: this.isChecked,
-      changeField: this.itemName
+      checked: this.listItem.checked,
+      changeField: this.listItem.taskName
     };
   },
   methods: {
     handleSelect: function() {
-      this.$emit("handle-select", this.checked, this.itemIndex);
+      this.$emit("handle-select", this.checked, this.listItem.number);
     },
     editName: function(event) {
       this.isNameEdiable = true;
       this.changeField = event.target.innerText;
-      this.$emit("update-task-name", this.changeField, this.itemIndex);
+      this.$emit("update-task-name", this.changeField, this.listItem.number);
     },
     updateTaskName: function() {
       this.$el.querySelector("span").blur();
-      this.$emit("update-task-name", this.changeField, this.itemIndex);
+      this.$emit("update-task-name", this.changeField, this.listItem.number);
     }
   }
 };

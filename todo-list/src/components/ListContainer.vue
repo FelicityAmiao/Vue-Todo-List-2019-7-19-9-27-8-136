@@ -3,9 +3,7 @@
     <ol class="todoList">
       <li v-for="item in showTodoList" v-bind:key="item.number">
         <todo-list-item
-          v-bind:itemName="item.taskName"
-          v-bind:itemIndex="item.number"
-          v-bind:isChecked="item.checked"
+          v-bind:listItem="item"
           v-on:handle-select="handleSelectOperator"
           v-on:update-task-name="updateName"
         ></todo-list-item>
