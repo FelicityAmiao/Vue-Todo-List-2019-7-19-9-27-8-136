@@ -5,8 +5,7 @@
       v-bind:contenteditable="true"
       v-on:blur="editName"
       v-on:keydown.enter="updateTaskName"
-      v-text="changeField"
-    ></span>
+    >{{changeField}}</span>
   </div>
 </template>
 <script>
