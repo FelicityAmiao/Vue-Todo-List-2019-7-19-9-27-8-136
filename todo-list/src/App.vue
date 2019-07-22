@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <Header></Header>
+    <Body></Body>
+    <Footer></Footer>
     <div class="mainPanel">
       <h2>Jquery To Do List</h2>
       <p class="briefIntro">
@@ -35,6 +38,9 @@
 </template>
 
 <script>
+import Header from "./components/Header.vue";
+import Body from "./components/Body.vue";
+import Footer from "./components/Footer.vue";
 import TodoListItem from "./components/TodoListItem.vue";
 export default {
   name: "app",
@@ -76,7 +82,10 @@ export default {
     }
   },
   components: {
-    TodoListItem
+    TodoListItem,
+    Header,
+    Body,
+    Footer
   }
 };
 </script>
