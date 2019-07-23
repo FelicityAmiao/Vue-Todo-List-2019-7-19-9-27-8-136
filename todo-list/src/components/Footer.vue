@@ -25,7 +25,7 @@ export default {
       this.isAllClicked = true;
       this.isActiveClicked = false;
       this.isCompleteClicked = false;
-      this.$emit('filter-todolist-item', filterTodolistItem);
+      this.$store.state.filterTodolistItem = filterTodolistItem;
     },
     selectActiveItems: function() {
       const filterTodolistItem = (list) => {
@@ -34,7 +34,7 @@ export default {
       this.isActiveClicked = true;
       this.isAllClicked = false;
       this.isCompleteClicked = false;
-      this.$emit('filter-todolist-item', filterTodolistItem);
+      this.$store.state.filterTodolistItem = filterTodolistItem;
     },
     selectCompleteItems: function() {
       const filterTodolistItem = (list) => {
@@ -43,7 +43,7 @@ export default {
       this.isAllClicked = false;
       this.isActiveClicked = false;
       this.isCompleteClicked = true;
-      this.$emit('filter-todolist-item', filterTodolistItem);
+      this.$store.state.filterTodolistItem = filterTodolistItem;
     }
   }
 };

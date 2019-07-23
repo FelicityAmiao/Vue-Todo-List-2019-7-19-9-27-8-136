@@ -2,8 +2,8 @@
   <div id="app">
     <div class="mainPanel">
       <Header></Header>
-      <Body :filterTodolistItem="filterTodolistItem"></Body>
-      <Footer @filter-todolist-item="getFilterTodolistItem"></Footer>
+      <Body></Body>
+      <Footer></Footer>
       <div></div>
     </div>
   </div>
@@ -18,16 +18,6 @@ export default {
     Header,
     Body,
     Footer
-  },
-  data() {
-    return {
-      filterTodolistItem: (list) => list
-    };
-  },
-  methods: {
-    getFilterTodolistItem: function(filterTodolistItem) {
-      this.filterTodolistItem = filterTodolistItem;
-    }
   }
 };
 </script>

@@ -19,8 +19,7 @@ export default {
     TodoListItem
   },
   props: {
-    todoList: Array,
-    filterTodolistItem: Function
+    todoList: Array
   },
   data() {
     return {
@@ -31,13 +30,13 @@ export default {
     todoList: function() {
       this.showFilteredTodoListItem();
     },
-    filterTodolistItem: function() {
+    '$store.state.filterTodolistItem': function() {
       this.showFilteredTodoListItem();
     }
   },
   methods: {
     showFilteredTodoListItem: function() {
-      this.showFilteredTodoList = this.filterTodolistItem(this.todoList);
+      this.showFilteredTodoList = this.$store.state.filterTodolistItem(this.todoList);
     },
     handleSelectOperator: function(checked, itemIndex) {
       this.todoList.filter(
