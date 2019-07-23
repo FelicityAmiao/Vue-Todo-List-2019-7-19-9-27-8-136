@@ -18,16 +18,13 @@ export default {
   components: {
     TodoListItem
   },
-  props: {
-    todoList: Array
-  },
   data() {
     return {
-      showFilteredTodoList: this.todoList
+      showFilteredTodoList: this.$store.state.todolist
     };
   },
   watch: {
-    todoList: function() {
+    '$store.state.inputTaskName': function() {
       this.showFilteredTodoListItem();
     },
     '$store.state.filterTodolistItem': function() {
@@ -36,15 +33,15 @@ export default {
   },
   methods: {
     showFilteredTodoListItem: function() {
-      this.showFilteredTodoList = this.$store.state.filterTodolistItem(this.todoList);
+      this.showFilteredTodoList = this.$store.state.filterTodolistItem(this.$store.state.todolist);
     },
     handleSelectOperator: function(checked, itemIndex) {
-      this.todoList.filter(
+      this.$store.state.todolist.filter(
         item => item.number === itemIndex
       )[0].checked = checked;
     },
     updateName: function(changedName, itemIndex) {
-      this.todoList.filter(
+      this.$store.state.todolist.filter(
         item => item.number === itemIndex
       )[0].taskName = changedName;
     }

@@ -10,17 +10,27 @@
   </div>
 </template>
 <script>
+let id = 0;
+const getId = () => {
+  return id++;
+};
 export default {
   name: "InpurBar",
   data() {
     return {
-      inputTaskName: ""
+      inputTaskName: ''
     };
   },
   methods: {
     addItem: function() {
-        this.$emit('get-input-task-name', this.inputTaskName);
-        this.inputTaskName = "";
+      this.$store.state.inputTaskName = this.inputTaskName;
+      let taskItem = {
+        taskName: this.$store.state.inputTaskName,
+        number: getId(),
+        checked: false
+      };
+      this.$store.state.todolist.push(taskItem);
+      this.inputTaskName = '';
     }
   }
 };
