@@ -22,16 +22,23 @@ export default {
   },
   methods: {
     handleSelect: function() {
-      this.$emit("handle-select", this.checked, this.listItem.number);
+      this.$store.state.todolist.filter(
+        item => item.number === this.listItem.number
+      )[0].checked = this.checked;
     },
     editName: function(event) {
       this.isNameEdiable = true;
       this.changeField = event.target.innerText;
-      this.$emit("update-task-name", this.changeField, this.listItem.number);
+      this.updateName(this.changeField, this.listItem.number);
     },
     updateTaskName: function() {
       this.$el.querySelector("span").blur();
-      this.$emit("update-task-name", this.changeField, this.listItem.number);
+      this.updateName(this.changeField, this.listItem.number);
+    },
+    updateName: function(changedName, itemIndex) {
+      this.$store.state.todolist.filter(
+        item => item.number === itemIndex
+      )[0].taskName = changedName;
     }
   }
 };
